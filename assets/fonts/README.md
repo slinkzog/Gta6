@@ -1,7 +1,7 @@
 # GTA font (Pricedown)
 
-The pack uses **Pricedown**, the font from the GTA logos, for every headline, the
-HUD clock, money counters, MISSION PASSED and WASTED. It is not included here because it's
+The pack uses **Pricedown**, the font from the GTA logos, for ALL of its text: headlines, the
+neon script lines, subtitles, ticker, phone, HUD and widgets. It is not included here because it's
 a licensed font by Typodermic Fonts (Ray Larabie) and can't be redistributed.
 
 ## Get it

@@ -68,9 +68,9 @@ Colours live as CSS variables at the top of `assets/css/theme.css` (`--pink`, `-
 
 ## GTA font
 
-Headlines, the HUD clock, money counters, MISSION PASSED and WASTED all use **Pricedown**, the GTA logo font.
+**All text** in the pack (headlines, neon script lines, mission subtitles, tips, ticker, phone, HUD and widgets) uses **Pricedown**, the GTA logo font.
 It's licensed, so it isn't in this repo. Install it on your PC or drop the file into `assets/fonts/`; see
-[`assets/fonts/README.md`](assets/fonts/README.md). Without it the pack falls back to Anton, and headlines
-automatically shrink to fit either font.
+[`assets/fonts/README.md`](assets/fonts/README.md). Without it the pack falls back to its original fonts (Anton, Pacifico, Rajdhani), and headlines
+automatically shrink to fit whichever font is in use.
 
 Fonts (Anton, Pacifico, Rajdhani) load from Google Fonts, so the PC needs an internet connection the first time.

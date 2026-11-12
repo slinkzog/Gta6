@@ -33,14 +33,14 @@
   --panel: rgba(16, 22, 52, 0.7);
   --horizon: 620px;
   --f-block: "GTA Pricedown", "Anton", "Bebas Neue", Impact, sans-serif;
-  --f-script: "Pacifico", "Brush Script MT", cursive;
-  --f-ui: "Rajdhani", "Segoe UI", sans-serif;
+  --f-script: "GTA Pricedown", "Pacifico", "Brush Script MT", cursive;
+  --f-ui: "GTA Pricedown", "Rajdhani", "Segoe UI", sans-serif;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { width: 100%; height: 100%; overflow: hidden; background: var(--night); }
 html:has(body.transparent), body.transparent { background: transparent; }
-body { font-family: var(--f-ui); color: var(--cream); -webkit-font-smoothing: antialiased; }
+body { font-family: var(--f-ui); color: var(--cream); -webkit-font-smoothing: antialiased; font-synthesis: none; }
 
 .stage {
   position: absolute; width: 1920px; height: 1080px; overflow: hidden;
