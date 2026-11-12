@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Just Chatting</title>
+<link rel="stylesheet" href="../assets/css/theme.css">
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/scene.js"></script>
+</head>
+<!-- Full scene. Place webcam at x=60 y=150, 1240x698 and chat dock at x=1360 y=150, 500x698. -->
+<body>
+  <div class="stage">
+    <div class="scene" data-scene data-road="false"></div>
+    <div class="content">
+      <div class="badge panel" style="top:30px;padding:10px 24px"><span class="dot"></span><div><div class="name" data-bind="name">YOUR NAME</div><div class="sub">Just chatting</div></div></div>
+      <div class="hud" style="top:24px"><div class="time" data-clock>00:00</div></div>
+      <div class="cam" style="left:60px;top:150px;width:1240px;height:698px;background:rgba(0,0,0,.001)">
+        <div class="cam-tag">ON CAM</div><div class="rec">LIVE</div>
+      </div>
+      <div class="chatbox panel" style="left:1360px;top:150px;width:500px;height:698px">
+        <div class="head">CHAT <small>KEEP IT CLEAN</small></div>
+      </div>
+      <div class="panel goal" style="position:absolute;left:60px;top:880px;width:600px">
+        <div class="row"><span class="label" data-bind="goalLabel">GOAL</span><span class="val">$<span data-goal></span></span></div>
+        <div class="bar"><div data-goal-fill></div></div>
+      </div>
+      <div class="ticker"><div class="tag">FOLLOW</div><div class="ticker-track"></div></div>
+    </div>
+    <div class="wipe"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gameplay Overlay</title>
+<link rel="stylesheet" href="../assets/css/theme.css">
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/scene.js"></script>
+</head>
+<!-- Transparent overlay: put this ABOVE your game capture in OBS. -->
+<body class="transparent">
+  <div class="stage">
+    <div class="content">
+      <!-- webcam frame: place your camera source at x=50 y=650, 560x315 -->
+      <div class="cam" style="left:50px;top:650px;width:560px;height:315px">
+        <div class="cam-tag" data-bind="name">YOUR NAME</div>
+        <div class="rec">LIVE</div>
+      </div>
+      <div class="hud">
+        <div class="time" data-clock>00:00</div>
+        <div class="money">$<span data-goal>0 / 0</span></div>
+        <div class="stars-row"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span>★</span><span>★</span></div>
+      </div>
+      <div class="radio panel" style="bottom:50px;width:430px"><div class="disc"></div><div class="meta"><div class="station" data-bind="station">NEON FM</div><div class="song" data-bind="song">Song</div><div class="eq" data-eq></div></div></div>
+    </div>
+  </div>
+</body>
+</html>
