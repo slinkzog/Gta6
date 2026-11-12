@@ -56,6 +56,33 @@
     </svg>`;
   }
 
+  /* ---------- police cruiser (generic, black & white with lightbar) ---------- */
+  function copSVG() {
+    return `<svg viewBox="0 0 420 130" class="car-svg">
+      <path d="M18 96 C 20 78, 40 70, 76 66 L 128 40 C 150 30, 262 30, 286 40 L 340 66 C 382 70, 402 80, 404 96 L 400 106 L 22 106 Z" fill="#f2f2f2"/>
+      <path d="M22 84 L 402 84 L 400 106 L 22 106 Z" fill="#111"/>
+      <path d="M140 44 C 160 37, 255 36, 278 44 L 300 66 L 120 66 Z" fill="#0e1226"/>
+      <rect x="196" y="22" width="56" height="12" rx="3" fill="#222"/>
+      <rect x="198" y="24" width="25" height="8" rx="2" class="lb-red"/>
+      <rect x="225" y="24" width="25" height="8" rx="2" class="lb-blue"/>
+      <rect x="390" y="76" width="14" height="7" rx="3" fill="#fff6c8"/>
+      <circle cx="98" cy="106" r="22" fill="#05030a"/><circle cx="98" cy="106" r="9" fill="#888"/>
+      <circle cx="330" cy="106" r="22" fill="#05030a"/><circle cx="330" cy="106" r="9" fill="#888"/>
+    </svg>`;
+  }
+  function heliSVG() {
+    return `<svg viewBox="0 0 260 110" class="heli-svg">
+      <rect class="rotor" x="10" y="8" width="230" height="5" rx="2" fill="#0b0414"/>
+      <rect x="122" y="10" width="6" height="16" fill="#0b0414"/>
+      <path d="M70 40 C 80 22, 150 20, 168 30 L 176 44 C 180 66, 160 78, 120 78 L 86 78 C 66 78, 60 58, 70 40 Z" fill="#0b0414"/>
+      <path d="M150 34 C 160 36, 168 42, 170 50 L 146 50 Z" fill="#57e7ff" opacity=".55"/>
+      <path d="M86 50 L 10 44 L 6 36 L 0 36 L 4 58 L 10 58 L 86 62 Z" fill="#0b0414"/>
+      <rect class="tail-rotor" x="0" y="30" width="5" height="34" fill="#0b0414"/>
+      <path d="M90 84 L 170 84 M100 78 L 96 84 M150 78 L 154 84" stroke="#0b0414" stroke-width="4"/>
+      <circle cx="104" cy="78" r="3" class="heli-strobe"/>
+    </svg>`;
+  }
+
   /* ---------- build the background scene ---------- */
   function buildScene(root) {
     const opt = root.dataset;
@@ -145,6 +172,17 @@
       el("div", "road-lines", road);
       const car = el("div", "car", root);
       car.innerHTML = carSVG();
+      const cop = el("div", "car cop", root);
+      cop.innerHTML = copSVG();
+      el("div", "cop-glow", root); // red/blue wash when the chase passes
+    }
+
+    // police helicopter with a sweeping searchlight
+    if (opt.heli !== "false") {
+      const h = el("div", "heli", root);
+      el("div", "searchlight", h);
+      const body = el("div", "heli-body", h);
+      body.innerHTML = heliSVG();
     }
 
     // birds
@@ -265,6 +303,80 @@
     setTimeout(step, 800);
   }
 
+  /* wanted level: data-wanted="auto" climbs with the countdown, a number fixes it */
+  function wanted() {
+    $$("[data-wanted]").forEach((w) => {
+      w.classList.add("wanted");
+      for (let i = 0; i < 5; i++) el("span", "", w).textContent = "★";
+      const stars = $$("span", w);
+      const set = (n) => stars.forEach((s, i) => s.classList.toggle("on", i < n));
+      const fixed = w.dataset.wanted;
+      if (fixed !== "auto") { setTimeout(() => set(fixed === "" ? Number(C.wanted) || 0 : Number(fixed)), 900); return; }
+      const mins = Number(C.countdown) || 5;
+      const start = Date.now();
+      const tick = () => set(Math.min(5, 1 + Math.floor(((Date.now() - start) / (mins * 60000)) * 5)));
+      tick();
+      setInterval(tick, 1000);
+    });
+  }
+
+  /* mission-style subtitle: {word} is highlighted, words fade in one by one */
+  function mission() {
+    $$("[data-mission]").forEach((m) => {
+      const lines = [].concat(C[m.dataset.mission] || []);
+      if (!lines.length) return;
+      let i = 0;
+      const show = () => {
+        const txt = lines[i++ % lines.length].split("{name}").join(C.name);
+        m.innerHTML = "";
+        let hl = false, n = 0;
+        txt.split(/([{}])/).forEach((part) => {
+          if (part === "{") { hl = true; return; }
+          if (part === "}") { hl = false; return; }
+          part.split(/(\s+)/).forEach((w) => {
+            if (!w) return;
+            const s = el("span", hl ? "hl" : "", m);
+            s.textContent = w;
+            s.style.animationDelay = (n++ * 0.06).toFixed(2) + "s";
+          });
+        });
+      };
+      show();
+      if (lines.length > 1) setInterval(show, 8000);
+    });
+  }
+
+  /* phone widget: socials as contacts */
+  function phone() {
+    $$("[data-phone]").forEach((p) => {
+      const apps = [
+        C.twitch && ["T", "Twitch", C.twitch, "#9146ff"],
+        C.twitter && ["X", "X", "@" + C.twitter, "#222"],
+        C.youtube && ["▶", "YouTube", C.youtube, "#ff0033"],
+        C.tiktok && ["♪", "TikTok", "@" + C.tiktok, "#00b3b8"],
+        C.discord && ["D", "Discord", C.discord, "#5865f2"],
+      ].filter(Boolean);
+      p.innerHTML = `<div class="ph-notch"></div><div class="ph-top"><span data-clock>00:00</span><span>▮▮▮ 92%</span></div>
+        <div class="ph-title">CONTACTS</div>
+        ${apps.map(([g, n, v, c], i) => `<div class="ph-app" style="animation-delay:${(1.6 + i * 0.15).toFixed(2)}s"><b style="background:${c}">${g}</b><div><small>${n}</small>${v}</div></div>`).join("")}`;
+    });
+  }
+
+  /* cash counter that ticks up like a mission payout */
+  function cash() {
+    $$("[data-cash]").forEach((c) => {
+      const target = Number(C.cash) || 0;
+      let t0 = null;
+      const step = (t) => {
+        if (t0 === null) t0 = t + 2600;
+        const k = Math.max(0, Math.min(1, (t - t0) / 1600));
+        c.textContent = "$" + Math.round(target * (1 - Math.pow(1 - k, 3))).toLocaleString("en-US");
+        if (k < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  }
+
   // split headline text into letters for staggered neon flicker / drop-in
   function splitLetters() {
     $$("[data-split]").forEach((e) => {
@@ -288,9 +400,13 @@
     buildTicker();
     countdown();
     tips();
+    phone();
     clock();
     eq();
     goal();
+    wanted();
+    mission();
+    cash();
     document.body.classList.add("ready");
   });
 })();

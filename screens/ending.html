@@ -13,19 +13,21 @@
     <div class="scene" data-scene></div>
     <div class="content">
       <div class="badge panel"><span class="dot"></span><div><div class="name" data-bind="name">YOUR NAME</div><div class="sub" data-bind="tagline">Live</div></div></div>
-      <div class="hud"><div class="time" data-clock>00:00</div></div>
+      <div class="hud"><div class="time" data-clock>00:00</div><div data-wanted="0"></div></div>
       <div class="center-stack" style="top:170px">
         <div class="mission"><span class="glitch" data-text="MISSION PASSED">MISSION PASSED</span></div>
         <div class="respect">+ RESPECT</div>
-        <div class="script" style="font-size:110px;margin-top:20px">Thanks for riding along</div>
+        <div class="payout" data-cash>$0</div>
+        <div class="script" style="font-size:84px;margin-top:6px">Thanks for riding along</div>
       </div>
-      <div class="center-stack" style="top:640px">
-        <div class="panel" style="padding:22px 50px;animation:slideUp .8s both 2.2s">
+      <div class="center-stack" style="top:690px">
+        <div class="panel" style="padding:14px 44px;animation:slideUp .8s both 2.6s">
           <div class="label" style="text-align:center">Next run</div>
-          <div class="block" style="font-size:64px;color:#fff;letter-spacing:4px" data-bind="schedule">SCHEDULE</div>
+          <div class="block" style="font-size:54px;color:#fff;letter-spacing:4px" data-bind="schedule">SCHEDULE</div>
         </div>
       </div>
-      <div class="radio panel"><div class="disc"></div><div class="meta"><div class="station" data-bind="station">NEON FM</div><div class="song" data-bind="song">Song</div><div class="eq" data-eq></div></div></div>
+      <div class="radio panel" style="bottom:200px"><div class="disc"></div><div class="meta"><div class="station" data-bind="station">NEON FM</div><div class="song" data-bind="song">Song</div><div class="eq" data-eq></div></div></div>
+      <div class="mission-sub" data-mission="missionEnd" style="bottom:140px"></div>
       <div class="ticker"><div class="tag">FOLLOW</div><div class="ticker-track"></div></div>
     </div>
     <div class="wipe"><i></i><i></i><i></i><i></i><i></i><i></i></div>

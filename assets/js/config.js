@@ -20,6 +20,24 @@ window.NC_DEFAULTS = {
   goal: 100,                       // follower / sub goal shown in the HUD money counter
   goalNow: 64,
   goalLabel: "FOLLOWER GOAL",
+  wanted: 3,                       // wanted stars on the HUD (1-5)
+  cash: 1000000,                   // payout counted up on the Mission Passed screen
+  wastedText: "WASTED",            // big word on screens/wasted.html (try BUSTED)
+  // Mission-style subtitles. Wrap words in {braces} to highlight them. {name} = your name.
+  missionStart: [
+    "Get to the {stream} and wait for {{name}}.",
+    "Lose the {cops} and meet the crew in {chat}.",
+  ],
+  missionBrb: [
+    "{{name}} stepped out. Stay in the {car}.",
+    "Hold the position until the {crew} returns.",
+  ],
+  missionEnd: [
+    "Go to the {Discord} and lay low until next time.",
+  ],
+  missionWasted: [
+    "Technical difficulties. {{name}} is respawning at the {hospital}.",
+  ],
   // Rotating "loading screen" tips on the Starting Soon screen
   tips: [
     "Grab a drink and get comfy — the city never sleeps.",
@@ -34,7 +52,7 @@ window.NC = (function () {
   const cfg = Object.assign({}, window.NC_DEFAULTS);
   const params = new URLSearchParams(location.search);
   for (const [k, v] of params) {
-    if (k === "tips") cfg.tips = v.split("|");
+    if (Array.isArray(cfg[k])) cfg[k] = v.split("|");
     else if (typeof cfg[k] === "number") cfg[k] = Number(v);
     else cfg[k] = v;
   }

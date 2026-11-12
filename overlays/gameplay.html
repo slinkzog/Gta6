@@ -12,15 +12,20 @@
 <body class="transparent">
   <div class="stage">
     <div class="content">
-      <!-- webcam frame: place your camera source at x=50 y=650, 560x315 -->
-      <div class="cam" style="left:50px;top:650px;width:560px;height:315px">
-        <div class="cam-tag" data-bind="name">YOUR NAME</div>
+      <!-- webcam frame: place your camera source at x=50 y=50, 480x270 -->
+      <div class="cam" style="left:50px;top:50px;width:480px;height:270px">
+        <div class="cam-tag" style="top:auto;bottom:-24px" data-bind="name">YOUR NAME</div>
         <div class="rec">LIVE</div>
       </div>
       <div class="hud">
         <div class="time" data-clock>00:00</div>
-        <div class="money">$<span data-goal>0 / 0</span></div>
-        <div class="stars-row"><span class="on">★</span><span class="on">★</span><span class="on">★</span><span>★</span><span>★</span></div>
+        <div class="money">$<span data-goal>0 / 0</span><div class="cash-pop">+ $500</div></div>
+        <div data-wanted></div>
+      </div>
+      <div class="radar-wrap">
+        <div class="radar"><div class="radar-map"></div><div class="blip y"></div><div class="blip p"></div><div class="blip c"></div>
+          <div class="me"></div><div class="compass">N</div><div class="cop-edge"></div></div>
+        <div class="vitals"><div class="hp"><i></i></div><div class="ar"><i></i></div></div>
       </div>
       <div class="radio panel" style="bottom:50px;width:430px"><div class="disc"></div><div class="meta"><div class="station" data-bind="station">NEON FM</div><div class="song" data-bind="song">Song</div><div class="eq" data-eq></div></div></div>
     </div>

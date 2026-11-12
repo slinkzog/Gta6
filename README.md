@@ -9,14 +9,15 @@ No images, videos or installs — everything (sunset, skyline, palm trees, synth
 
 | Scene | File | Animated bits |
 |---|---|---|
-| Starting Soon | `screens/starting.html` | Drop-in neon title, live countdown, loading bar, rotating "loading screen" tips |
-| Be Right Back | `screens/brb.html` | Bouncing title, looping loading bar, "Now Playing" radio widget |
-| Stream Ending | `screens/ending.html` | **MISSION PASSED** slam-in with glitch, **+RESPECT** pop, next stream schedule |
-| Offline | `screens/offline.html` | Offline title + schedule card |
+| Starting Soon | `screens/starting.html` | Drop-in neon title, live countdown, loading bar, rotating tips, mission subtitle, **wanted level that climbs from 1 to 5 stars** as the countdown runs |
+| Be Right Back | `screens/brb.html` | Bouncing title, looping loading bar, radio widget, phone with your socials, mission subtitle |
+| Stream Ending | `screens/ending.html` | **MISSION PASSED** slam-in with glitch, **+RESPECT** pop, cash payout counting up, wanted level cleared, next stream schedule |
+| Offline | `screens/offline.html` | Offline title, schedule card, phone with your socials as contacts |
+| Wasted / Busted | `screens/wasted.html` | Technical-difficulties screen: scene drains to grayscale and zooms, red **WASTED** fades in, letterbox bars, "Respawning" spinner. Add `?wastedText=BUSTED` for the other one |
 | Just Chatting | `overlays/just-chatting.html` | Big neon webcam frame, chat panel, animated follower-goal meter |
-| Gameplay overlay | `overlays/gameplay.html` | **Transparent** — webcam frame, HUD clock, `$` goal counter, flashing "wanted" stars, radio widget |
+| Gameplay overlay | `overlays/gameplay.html` | **Transparent** game HUD: radar minimap with blips and flashing police edge, health / armour bars, clock, `$` goal counter with `+$` pickups, wanted stars, webcam frame, radio widget |
 
-Every full scene also has: a sliding sunset sky, twinkling stars, drifting clouds, a striped retro sun, a city skyline with flickering windows and beacon lights, a shimmering ocean reflection, a moving neon grid, swaying palm trees, flying birds, a sports car that drives past with its headlights on, scanlines, a scrolling socials ticker and a colour-bar wipe intro.
+Every full scene also has: a sliding sunset sky, twinkling stars, drifting clouds, a striped retro sun, a city skyline with flickering windows and beacon lights, a shimmering ocean reflection, a moving neon grid, swaying palm trees, flying birds, a sports car being chased by a police cruiser with flashing lights (the whole scene flashes red and blue as they pass), a police helicopter sweeping its searchlight, scanlines, a scrolling socials ticker and a colour-bar wipe intro.
 
 Open `index.html` in a browser to preview everything at once.
 
@@ -32,7 +33,7 @@ Open `index.html` in a browser to preview everything at once.
 
 | Overlay | Webcam box | Other |
 |---|---|---|
-| `overlays/gameplay.html` | x 50, y 650, 560 × 315 | Put the overlay above your game capture |
+| `overlays/gameplay.html` | x 50, y 50, 480 × 270 | Put the overlay above your game capture |
 | `overlays/just-chatting.html` | x 60, y 150, 1240 × 698 | Chat browser source / dock at x 1360, y 150, 500 × 698 |
 
 ## Customise it
@@ -55,7 +56,13 @@ file:///C:/Streaming/neon-coast/screens/starting.html?name=SlinkZ&countdown=10&t
 | `station`, `song` | `NEON FM 104.2` | Radio "Now Playing" widget |
 | `goal`, `goalNow`, `goalLabel` | `100`, `64`, `SUB GOAL` | Goal meter / HUD money counter |
 | `tips` | `Tip one\|Tip two` | Starting Soon tips, separated by `\|` |
+| `missionStart`, `missionBrb`, `missionEnd`, `missionWasted` | `Get to the {stream}\|Lose the {cops}` | Mission subtitles. `{word}` is highlighted yellow, `{name}` becomes your name |
+| `wanted` | `4` | Wanted stars on BRB / gameplay / just chatting |
+| `cash` | `250000` | Payout on the Mission Passed screen |
+| `wastedText` | `BUSTED` | Big word on the Wasted screen |
 
 Colours live as CSS variables at the top of `assets/css/theme.css` (`--pink`, `--teal`, `--yellow`, …) if you want to re-tint the whole pack.
+
+**Optional:** if you have a "Pricedown"-style font installed on your PC under the name `Pricedown`, the WASTED screen uses it automatically; otherwise it falls back to Anton.
 
 Fonts (Anton, Pacifico, Rajdhani) load from Google Fonts, so the PC needs an internet connection the first time.
