@@ -63,6 +63,11 @@ file:///C:/Streaming/neon-coast/screens/starting.html?name=SlinkZ&countdown=10&t
 
 Colours live as CSS variables at the top of `assets/css/theme.css` (`--pink`, `--teal`, `--yellow`, …) if you want to re-tint the whole pack.
 
-**Optional:** if you have a "Pricedown"-style font installed on your PC under the name `Pricedown`, the WASTED screen uses it automatically; otherwise it falls back to Anton.
+## GTA font
+
+Headlines, the HUD clock, money counters, MISSION PASSED and WASTED all use **Pricedown**, the GTA logo font.
+It's licensed, so it isn't in this repo. Install it on your PC or drop the file into `assets/fonts/`; see
+[`assets/fonts/README.md`](assets/fonts/README.md). Without it the pack falls back to Anton, and headlines
+automatically shrink to fit either font.
 
 Fonts (Anton, Pacifico, Rajdhani) load from Google Fonts, so the PC needs an internet connection the first time.

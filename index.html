@@ -23,6 +23,7 @@
 <body>
   <h1>NEON COAST</h1>
   <div class="sub">animated stream package</div>
+  <p id="fontStatus" style="text-align:center;font-weight:700;letter-spacing:1px;margin:-14px 0 28px">Checking GTA font…</p>
   <div class="grid">
     <div class="card"><div class="frame"><iframe src="screens/starting.html"></iframe></div><div class="meta"><b>STARTING SOON</b><a href="screens/starting.html" target="_blank">open ↗</a></div></div>
     <div class="card"><div class="frame"><iframe src="screens/brb.html"></iframe></div><div class="meta"><b>BE RIGHT BACK</b><a href="screens/brb.html" target="_blank">open ↗</a></div></div>
@@ -32,5 +33,22 @@
     <div class="card"><div class="frame"><iframe src="overlays/just-chatting.html"></iframe></div><div class="meta"><b>JUST CHATTING</b><a href="overlays/just-chatting.html" target="_blank">open ↗</a></div></div>
     <div class="card"><div class="frame"><iframe src="overlays/gameplay.html"></iframe></div><div class="meta"><b>GAMEPLAY OVERLAY (transparent)</b><a href="overlays/gameplay.html" target="_blank">open ↗</a></div></div>
   </div>
+<script>
+  // Same font sources as assets/css/theme.css, so this reports what the scenes will get.
+  (function () {
+    const el = document.getElementById("fontStatus");
+    const srcs = ['local("Pricedown")', 'local("Pricedown Bl")', 'local("Pricedown Black")', 'local("PricedownBl-Regular")',
+      'url("assets/fonts/pricedown.woff2")', 'url("assets/fonts/pricedown.woff")', 'url("assets/fonts/pricedown.otf")',
+      'url("assets/fonts/pricedown.ttf")', 'url("assets/fonts/pricedown bl.otf")', 'url("assets/fonts/pricedown bl.ttf")'];
+    new FontFace("GTA Pricedown Check", srcs.join(", ")).load().then(function (f) {
+      document.fonts.add(f);
+      el.textContent = "GTA font (Pricedown) loaded ✔";
+      el.style.cssText += ";color:#7dff8c;font-family:'GTA Pricedown Check';font-size:34px;font-weight:400";
+    }).catch(function () {
+      el.innerHTML = "GTA font not found, using fallback. See <a style='color:#2de2e6' href='assets/fonts/README.md'>assets/fonts/README.md</a>";
+      el.style.color = "#ffd23f";
+    });
+  })();
+</script>
 </body>
 </html>

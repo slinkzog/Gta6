@@ -1,0 +1,5 @@
+# Licensed font files: keep them local, don't publish them
+assets/fonts/*.otf
+assets/fonts/*.ttf
+assets/fonts/*.woff
+assets/fonts/*.woff2

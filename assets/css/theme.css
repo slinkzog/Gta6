@@ -4,6 +4,21 @@
    ===================================================================== */
 @import url("https://fonts.googleapis.com/css2?family=Anton&family=Pacifico&family=Rajdhani:wght@500;700&family=Bebas+Neue&display=swap");
 
+/* GTA title font (Pricedown). Not bundled — it's a licensed font.
+   Either install it on the streaming PC, or drop the file into assets/fonts/
+   (see assets/fonts/README.md). Falls back to Anton if it isn't found. */
+@font-face {
+  font-family: "GTA Pricedown";
+  src: local("Pricedown"), local("Pricedown Bl"), local("Pricedown Black"), local("PricedownBl-Regular"),
+       url("../fonts/pricedown.woff2") format("woff2"),
+       url("../fonts/pricedown.woff") format("woff"),
+       url("../fonts/pricedown.otf") format("opentype"),
+       url("../fonts/pricedown.ttf") format("truetype"),
+       url("../fonts/pricedown bl.otf") format("opentype"),
+       url("../fonts/pricedown bl.ttf") format("truetype");
+  font-display: block;
+}
+
 :root {
   --night: #12051f;
   --plum: #2a0a45;
@@ -17,7 +32,7 @@
   --cream: #fff3e0;
   --panel: rgba(22, 6, 40, 0.72);
   --horizon: 620px;
-  --f-block: "Anton", "Bebas Neue", Impact, sans-serif;
+  --f-block: "GTA Pricedown", "Anton", "Bebas Neue", Impact, sans-serif;
   --f-script: "Pacifico", "Brush Script MT", cursive;
   --f-ui: "Rajdhani", "Segoe UI", sans-serif;
 }
@@ -430,7 +445,7 @@ body { font-family: var(--f-ui); color: var(--cream); -webkit-font-smoothing: an
 /* -------- WASTED / BUSTED -------- */
 .wasted-scene .scene { animation: wastedFx 6s ease-out forwards; }
 @keyframes wastedFx { from { filter: none; transform: scale(1); } to { filter: grayscale(1) contrast(1.15) brightness(.75); transform: scale(1.12); } }
-.wasted-word { font-family: "Pricedown", var(--f-block); font-size: 230px; letter-spacing: 6px; color: #c8242b; line-height: 1;
+.wasted-word { font-family: var(--f-block); font-size: 230px; letter-spacing: 6px; color: #c8242b; line-height: 1;
   -webkit-text-stroke: 5px #000; text-shadow: 8px 8px 0 #000;
   animation: wastedIn 1.6s ease-out both 1.4s; }
 @keyframes wastedIn { from { opacity: 0; transform: scale(1.6); filter: blur(10px); } to { opacity: 1; transform: none; filter: none; } }

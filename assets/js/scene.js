@@ -377,6 +377,20 @@
     });
   }
 
+  /* shrink any [data-fit="maxWidthPx"] element until it fits that width */
+  function fitText() {
+    $$("[data-fit]").forEach((e) => {
+      const max = Number(e.dataset.fit) || 1700;
+      if (!e.dataset.baseSize) e.dataset.baseSize = parseFloat(getComputedStyle(e).fontSize);
+      let size = Number(e.dataset.baseSize);
+      e.style.fontSize = size + "px";
+      e.style.whiteSpace = "nowrap";
+      // measure without the drop-in transforms
+      const w = e.scrollWidth;
+      if (w > max) e.style.fontSize = Math.floor((size * max) / w) + "px";
+    });
+  }
+
   // split headline text into letters for staggered neon flicker / drop-in
   function splitLetters() {
     $$("[data-split]").forEach((e) => {
@@ -407,6 +421,14 @@
     wanted();
     mission();
     cash();
+    fitText();
+    if (document.fonts) {
+      document.fonts.ready.then(fitText);
+      document.fonts.load('100px "GTA Pricedown"').then((f) => {
+        document.body.classList.toggle("gta-font", f.length > 0);
+        fitText();
+      });
+    }
     document.body.classList.add("ready");
   });
 })();
