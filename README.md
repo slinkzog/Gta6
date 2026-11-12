@@ -1,6 +1,6 @@
 # NEON COAST — GTA6-inspired animated stream package
 
-A fully animated, vice-city-at-sunset style stream package built as HTML/CSS browser sources for **OBS / Streamlabs**.
+A fully animated, Miami-at-sunset style stream package built as HTML/CSS browser sources for **OBS / Streamlabs**.
 No images, videos or installs — everything (sunset, skyline, palm trees, synthwave grid, passing sports car, neon text) is drawn and animated in code, so it stays crisp at any resolution.
 
 > Fan-made theme inspired by the GTA6 vibe. It uses no official Rockstar logos, fonts or artwork.
@@ -17,7 +17,9 @@ No images, videos or installs — everything (sunset, skyline, palm trees, synth
 | Just Chatting | `overlays/just-chatting.html` | Big neon webcam frame, chat panel, animated follower-goal meter |
 | Gameplay overlay | `overlays/gameplay.html` | **Transparent** game HUD: radar minimap with blips and flashing police edge, health / armour bars, clock, `$` goal counter with `+$` pickups, wanted stars, webcam frame, radio widget |
 
-Every full scene also has: a sliding sunset sky, twinkling stars, drifting clouds, a striped retro sun, a city skyline with flickering windows and beacon lights, a shimmering ocean reflection, a moving neon grid, swaying palm trees, flying birds, a sports car being chased by a police cruiser with flashing lights (the whole scene flashes red and blue as they pass), a police helicopter sweeping its searchlight, scanlines, a scrolling socials ticker and a colour-bar wipe intro.
+Every full scene is a Miami beach at sunset: a pastel sky with drifting clouds and a striped retro sun, a hazy skyline across the bay, a turquoise ocean with a shimmering sun reflection and a speedboat leaving a wake, surf washing onto the sand, flamingos dipping their heads, a rainbow lifeguard tower with a flapping flag, and two pastel art-deco hotels with neon outlines and chasing neon signs. Up front, palm trees sway over Ocean Drive while a sports car is chased by a police cruiser with flashing lights (the whole scene flashes red and blue as they pass), and a police helicopter sweeps its searchlight overhead. On top of that there's a scrolling socials ticker and a colour-bar wipe intro.
+
+**Scene options** (add to a scene's `<div class="scene" data-scene ...>`): `data-hotels="false"`, `data-beach="false"`, `data-palms="false"`, `data-road="false"`, `data-heli="false"`, or `data-grid="true"` to bring back the synthwave neon grid.
 
 Open `index.html` in a browser to preview everything at once.
 
@@ -53,7 +55,8 @@ file:///C:/Streaming/neon-coast/screens/starting.html?name=SlinkZ&countdown=10&t
 | `countdown` | `10` | Starting Soon timer in minutes (`0` hides it) |
 | `twitch`, `twitter`, `youtube`, `tiktok`, `discord` | `slinkz` | Ticker entries (leave empty to hide one) |
 | `schedule` | `TUE / THU — 7PM` | Schedule on the ticker, Ending and Offline screens |
-| `station`, `song` | `NEON FM 104.2` | Radio "Now Playing" widget |
+| `station`, `song` | `OCEAN FM 98.6` | Radio "Now Playing" widget |
+| `hotelLeft`, `hotelRight` | `CORAL`, `PALMS` | Neon signs on the art-deco hotels (short words fit best) |
 | `goal`, `goalNow`, `goalLabel` | `100`, `64`, `SUB GOAL` | Goal meter / HUD money counter |
 | `tips` | `Tip one\|Tip two` | Starting Soon tips, separated by `\|` |
 | `missionStart`, `missionBrb`, `missionEnd`, `missionWasted` | `Get to the {stream}\|Lose the {cops}` | Mission subtitles. `{word}` is highlighted yellow, `{name}` becomes your name |

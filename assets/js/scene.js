@@ -83,16 +83,70 @@
     </svg>`;
   }
 
+  /* ---------- Miami props ---------- */
+  function flamingoSVG() {
+    return `<svg viewBox="0 0 90 150" class="flamingo-svg">
+      <g class="fl-neck"><path d="M34 62 C 14 44, 44 30, 28 12" stroke="#ff5fa2" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <circle cx="28" cy="11" r="7" fill="#ff5fa2"/><path d="M33 8 L 46 14 L 40 20 L 33 15 Z" fill="#fff0f5"/><path d="M41 15 L 46 14 L 40 20 Z" fill="#1a0b2a"/>
+        <circle cx="27" cy="9" r="1.6" fill="#1a0b2a"/></g>
+      <path d="M30 64 C 34 48, 70 46, 82 58 C 76 60, 74 66, 80 72 C 66 82, 38 80, 30 64 Z" fill="#ff5fa2"/>
+      <path d="M44 60 C 54 54, 68 56, 74 64 C 62 66, 52 66, 44 60 Z" fill="#ff8cc0"/>
+      <path d="M52 78 L 52 146" stroke="#ff7ab3" stroke-width="3.5"/>
+      <path d="M58 78 L 68 104 L 54 110" stroke="#ff7ab3" stroke-width="3.5" fill="none"/>
+    </svg>`;
+  }
+  function lifeguardSVG() {
+    return `<svg viewBox="0 0 170 190" class="lg-svg">
+      <path d="M40 110 L 22 188 M130 110 L 148 188 M60 110 L 56 188 M110 110 L 114 188" stroke="#e8e1d4" stroke-width="7"/>
+      <path d="M20 150 L 150 150" stroke="#e8e1d4" stroke-width="5"/>
+      <path d="M70 188 L 96 112" stroke="#e8e1d4" stroke-width="6"/><path d="M72 176 L 100 176 M78 160 L 102 160 M84 144 L 104 144 M89 128 L 106 128" stroke="#e8e1d4" stroke-width="4"/>
+      <rect x="22" y="104" width="126" height="10" fill="#fff"/>
+      <rect x="30" y="50" width="110" height="56" rx="6" fill="#ffd23f"/>
+      <rect x="30" y="50" width="22" height="56" fill="#ff5fa2"/><rect x="52" y="50" width="22" height="56" fill="#ff8a3d"/>
+      <rect x="96" y="50" width="22" height="56" fill="#2ec4d6"/><rect x="118" y="50" width="22" height="56" rx="0" fill="#7b61ff"/>
+      <rect x="60" y="62" width="50" height="26" rx="4" fill="#1a3b5c" opacity=".85"/>
+      <path d="M20 54 L 85 22 L 150 54 Z" fill="#fff"/><path d="M20 54 L 85 22 L 150 54" fill="none" stroke="#ff5fa2" stroke-width="4"/>
+      <path d="M85 22 L 85 0" stroke="#fff" stroke-width="3"/>
+      <path class="lg-flag" d="M86 1 L 112 6 L 86 12 Z" fill="#ff2d55"/>
+    </svg>`;
+  }
+  function boatSVG() {
+    return `<svg viewBox="0 0 200 60" class="boat-svg">
+      <path d="M8 34 L 186 30 C 176 46, 150 54, 120 54 L 34 54 C 20 52, 12 44, 8 34 Z" fill="#fff"/>
+      <path d="M14 42 L 178 38 C 174 42, 170 45, 164 47 L 22 49 Z" fill="#ff5fa2"/>
+      <path d="M70 32 L 92 14 L 140 14 L 150 30 Z" fill="#fff"/><path d="M96 18 L 136 18 L 142 28 L 88 30 Z" fill="#1a3b5c"/>
+    </svg>`;
+  }
+  function decoHotel(side, name, c1, c2, neon) {
+    const h = document.createElement("div");
+    h.className = "deco " + side;
+    h.style.cssText = `--c1:${c1};--c2:${c2};--neon:${neon}`;
+    let rows = "";
+    for (let r = 0; r < 8; r++) {
+      let w = "";
+      for (let c = 0; c < 5; c++) {
+        const k = Math.random();
+        const cls = k < 0.45 ? "lit" : k < 0.6 ? "lit flick" : "";
+        w += `<i class="${cls}" style="animation-delay:${rand(0, 8).toFixed(2)}s"></i>`;
+      }
+      rows += `<div class="deco-row">${w}</div>`;
+    }
+    h.innerHTML = `<div class="deco-crown"></div><div class="deco-main"><div class="deco-rows">${rows}</div></div>
+      <div class="deco-sign">${[...name].map((ch, i) => `<span style="animation-delay:${(i * 0.18).toFixed(2)}s">${ch}</span>`).join("")}</div>
+      <div class="deco-awning"></div>`;
+    return h;
+  }
+
   /* ---------- build the background scene ---------- */
   function buildScene(root) {
     const opt = root.dataset;
     el("div", "sky", root);
 
     const stars = el("div", "stars", root);
-    for (let i = 0; i < 120; i++) {
+    for (let i = 0; i < 60; i++) {
       const s = el("i", "", stars);
       s.style.left = rand(0, 100) + "%";
-      s.style.top = rand(0, 55) + "%";
+      s.style.top = rand(0, 30) + "%";
       const z = rand(1, 3);
       s.style.width = s.style.height = z + "px";
       s.style.animationDelay = rand(0, 4) + "s";
@@ -119,13 +173,13 @@
     let x = 0;
     while (x < 1920) {
       const w = rand(50, 130);
-      const h = rand(80, 330) * (Math.abs(x - 960) < 420 ? 1.25 : 1);
+      const h = rand(50, 190) * (Math.abs(x - 960) < 420 ? 1.3 : 1);
       const b = el("div", "bldg", sky);
       b.style.left = x + "px";
       b.style.width = w + "px";
       b.style.height = h + "px";
       if (Math.random() < 0.25) b.classList.add("spire");
-      const n = Math.floor((w * h) / 2600);
+      const n = Math.floor((w * h) / 4200);
       for (let i = 0; i < n; i++) {
         const win = el("i", "", b);
         win.style.left = Math.floor(rand(6, w - 10) / 10) * 10 + "px";
@@ -151,9 +205,44 @@
     }
 
     // perspective neon grid (synthwave floor)
-    if (opt.grid !== "false") {
+    if (opt.grid === "true") {
       const g = el("div", "grid-wrap", root);
       el("div", "grid", g);
+    }
+
+    // ocean swell lines + speedboat with wake
+    const swell = el("div", "swell", root);
+    for (let i = 0; i < 9; i++) {
+      const l = el("i", "", swell);
+      l.style.top = 30 + i * 22 + i * i * 2 + "px";
+      l.style.left = rand(-10, 60) + "%";
+      l.style.width = rand(80, 260) + "px";
+      l.style.animationDelay = -rand(0, 9) + "s";
+    }
+    const boat = el("div", "boat", root);
+    el("div", "wake", boat);
+    el("div", "boat-body", boat).innerHTML = boatSVG();
+
+    // beach: surf rolling onto the sand
+    if (opt.beach !== "false") {
+      const beach = el("div", "beach", root);
+      el("div", "sand", beach);
+      el("div", "wet", beach);
+      el("div", "surf s1", beach);
+      el("div", "surf s2", beach);
+      const lg = el("div", "lifeguard", root);
+      lg.innerHTML = lifeguardSVG();
+      [["fl-a", 0], ["fl-b", 1.3]].forEach(([c, d]) => {
+        const f = el("div", "flamingo " + c, root);
+        f.innerHTML = flamingoSVG();
+        f.style.setProperty("--d", d + "s");
+      });
+    }
+
+    // Ocean Drive art-deco hotels
+    if (opt.hotels !== "false") {
+      root.appendChild(decoHotel("left", C.hotelLeft || "CORAL", "#ffc2d4", "#ff9cbc", "#2ee6d6"));
+      root.appendChild(decoHotel("right", C.hotelRight || "PALMS", "#b9f3e4", "#7fe0d0", "#ff4fa3"));
     }
 
     // palms

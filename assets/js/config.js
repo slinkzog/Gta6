@@ -7,15 +7,17 @@
  */
 window.NC_DEFAULTS = {
   name: "YOUR NAME",              // channel / streamer name
-  tagline: "Live from the Neon Coast",
+  tagline: "Live from South Beach",
   countdown: 5,                    // minutes on the Starting Soon timer (0 = hide)
   twitch: "yourchannel",
   twitter: "yourhandle",
   youtube: "yourchannel",
   tiktok: "yourhandle",
   discord: "discord.gg/yourinvite",
-  station: "NEON FM 104.2",        // fake radio station shown in the "Now Playing" widget
-  song: "Night Drive — Synthwave Mix",
+  station: "OCEAN FM 98.6",        // fake radio station shown in the "Now Playing" widget
+  hotelLeft: "CORAL",              // neon signs on the art-deco hotels
+  hotelRight: "PALMS",
+  song: "Miami Nights — Synthwave Mix",
   schedule: "MON / WED / FRI — 8PM",
   goal: 100,                       // follower / sub goal shown in the HUD money counter
   goalNow: 64,
@@ -26,25 +28,26 @@ window.NC_DEFAULTS = {
   // Mission-style subtitles. Wrap words in {braces} to highlight them. {name} = your name.
   missionStart: [
     "Get to the {stream} and wait for {{name}}.",
-    "Lose the {cops} and meet the crew in {chat}.",
+    "Lose the {cops} and meet the crew on {Ocean Drive}.",
   ],
   missionBrb: [
     "{{name}} stepped out. Stay in the {car}.",
-    "Hold the position until the {crew} returns.",
+    "Grab a {mojito} and hold the beach until the {crew} returns.",
   ],
   missionEnd: [
-    "Go to the {Discord} and lay low until next time.",
+    "Go to the {Discord} and lay low at the {beach house} until next time.",
   ],
   missionWasted: [
     "Technical difficulties. {{name}} is respawning at the {hospital}.",
   ],
   // Rotating "loading screen" tips on the Starting Soon screen
   tips: [
-    "Grab a drink and get comfy — the city never sleeps.",
+    "Grab a cold drink. It's 90° and humid on Ocean Drive.",
     "Drop a follow so you don't miss the next heist.",
-    "Be cool in chat. The cops are watching.",
+    "Be cool in chat. Miami PD is watching.",
     "Hit that hype button when we roll out.",
     "Join the Discord to squad up after stream.",
+    "Sunscreen on, windows down, radio up.",
   ],
 };
 
